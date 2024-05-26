@@ -1,0 +1,34 @@
+ function[segment_start,segment_end]=Algorithm2(Y,Thres,win)
+ %Soundfilesegmentationalgorithm
+ %Input:Y-thesoundfiletobesegmented
+ % Thres-thethresholdvalueasthedecidingfactortoselect
+ segmentboundaries
+ % win-windowsizeforenergyanalysis
+ N=round(length(Y)/win); %Numberofframes
+ energy=zeros(1,N); %Energyarrayinitialization
+ %Computeenergyforeachframe
+ forn=1:N
+ frame=Y((n-1)*win+1:min(n*win,length(Y))); %Extractthe
+ currentframe
+ energy(n)=sum(frame.^2); %Computeenergyfortheframe
+ end
+ %Smooththeenergycurveusingamovingaveragefilter
+ smooth_energy=movmean(energy,3);
+ %Findsegmentboundariesbasedonthresholdandsmoothedenergycurve
+ segment_start=[];
+ segment_end=[];
+ form=2:N-1
+ ifenergy(m-1)<Thres&&energy(m)>=Thres
+ segment_start(end+1)=(m-1)*win; %Storethestartingindex
+ ofthesegment
+ elseifenergy(m)>=Thres&&energy(m+1)<Thres
+ segment_end(end+1)=m*win; %Storetheendingindexofthe
+ segment
+ end
+ end
+ %Ensureequallengthofsegment_startandsegment_endlists
+ iflength(segment_end)<length(segment_start)
+ segment_end(end+1)=N*win; %Settheendingindexofthelast
+ segmentastheendofthesoundfile
+ end
+ end
