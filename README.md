@@ -6,10 +6,15 @@ Simple speech segmentation in Matlab
  all of them are from a female speaker, while the Set-G files are from a male speaker.
 
 Experimental setup and Result of Proposed Algorithm
+
  Experiment setup :
+ 
  • Experimental Variable : Time tolerance, Threshold and win size
+ 
  • Time tolerance: t = {0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.10 }
+ 
  • Threshold : Thres = { 1.4 , 2.4, 3.4}
+ 
  • Win size : W = {256}
 
 The proposed algorithm adds a end point of the  soundwave.
